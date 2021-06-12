@@ -1,0 +1,27 @@
+{
+  "name": "app-builder",
+  "version": "1.0.0",
+  "description": "App Builder to build web app with 3D technology",
+  "main": "index.js",
+  "scripts": {
+    "build": "node build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vvskchaitanya/app-builder.git"
+  },
+  "keywords": [
+    "App",
+    "Builder",
+    "Firebase",
+    "App",
+    "Creator"
+  ],
+  "author": "V.V.S.K",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vvskchaitanya/app-builder/issues"
+  },
+  "homepage": "https://github.com/vvskchaitanya/app-builder#readme"
+}
