@@ -8,7 +8,7 @@ else{
 }
 
 function initialize(){
-    var components=["admin","main"];
+    var components=["admin","main",""];
     var files=["index.html","script.js","style.css"]
     components.forEach(component=>{
         fs.mkdirSync("src/"+component,{recursive: true});
