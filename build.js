@@ -1,1 +1,1 @@
-console.log("Hello NPM");
+var file=require("file");
