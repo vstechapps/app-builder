@@ -1,1 +1,24 @@
-admin style.css
+.header{
+    background-color: coral;
+}
+.title{
+    font-size: 25px;
+    font-weight: bold;
+}
+.tab{
+    font-size: 20px;
+    padding: 10px 15px;
+    cursor:pointer;
+    border-bottom: 2px solid coral;
+}
+.tab.active{
+    color:darkslateblue;
+    border-bottom: 2px solid darkslateblue;
+}
+.copyright{
+    font-size: 8px;
+}
+.seperator{
+    height:2px;
+    background:goldenrod;
+}
