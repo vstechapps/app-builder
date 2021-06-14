@@ -3,6 +3,7 @@ var fs = require('fs');
 var _r = { recursive: true };
 var watchFiles = [];
 var port = 8080;
+var static = require('node-static');
 
 
 // Compiling all files inside src folder
@@ -16,17 +17,12 @@ watchFiles.forEach(path => {
     });
 });
 
+
 // Serving the content from target folder
 console.log("Server serving at port : " + port);
+var file = new(static.Server)("target");
 http.createServer(function (req, res) {
-    if (req.url == "") req.url = "index.html";
-    var path = "target/" + req.url;
-    if (fs.existsSync(path)) {
-        res.write(fs.readFileSync(path));
-        res.writeHead(200);
-    }
-    else res.writeHead(404);
-    res.end();
+    file.serve(req,res);
 }).listen(port);
 
 // Compilation code

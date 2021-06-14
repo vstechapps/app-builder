@@ -25,5 +25,8 @@
   "bugs": {
     "url": "https://github.com/vvskchaitanya/app-builder/issues"
   },
-  "homepage": "https://github.com/vvskchaitanya/app-builder#readme"
+  "homepage": "https://github.com/vvskchaitanya/app-builder#readme",
+  "dependencies": {
+    "node-static": "^0.7.11"
+  }
 }
