@@ -5,7 +5,7 @@ var body={};
 
 var data={
     user:undefined,
-    menu:[{name:"login",action:"login()"}]
+    menu:[{name:"login",action:"login()"},{name:"home",action:"home()"}]
 }
 
 const isEmptyElement=function(elem) {
@@ -24,7 +24,10 @@ const parseElement=function(element){
     json.tag=element.tagName.toLowerCase();
     var attrNames=element.getAttributeNames();
     if (attrNames.length > 0) json.attributes = [];
-    attrNames.forEach(n => { json.attributes.push({ name: n, value: element.getAttribute(n) }) });
+    attrNames.forEach(n => { 
+        if(n=="react") json.react=element.getAttribute(n);
+        json.attributes.push({ name: n, value: element.getAttribute(n) });
+     });
     json.empty=isEmptyElement(element);
     if (element.childElementCount > 0) {
         json.children = [];
@@ -76,7 +79,7 @@ const generateElement=function(json){
         text+=" "+json.attributes[i].name+"=\""+json.attributes[i].value+"\"";
     }
     if (json.empty) text += " />";
-    else if (json.children == null || json.children.length == 0) text + ">" + json.text + "</" + json.tag + ">";
+    else if (json.children == null || json.children.length == 0) text += ">" + json.text + "</" + json.tag + ">";
     else {
         text += ">\n";
         for (var i in json.children) {
@@ -84,7 +87,32 @@ const generateElement=function(json){
         }
         text+="</"+json.tag+">";
     }
+    if(json.react!=null){
+        text=processReact(text,json);
+    }
     return text;
+}
+
+const processReact = function (text, json) {
+    if (data[json.react] instanceof Array) {
+        var iterative = "";
+        for (var s in data[json.react]) {
+            iterative += text;
+            for (var x in data[json.react][s]) {
+                iterative = iterative.replaceAll("@" + json.react + "." + x, data[json.react][s][x]);
+            }
+        }
+        return iterative;
+    }
+    else if (data[json.react] instanceof Object) {
+        for (var x in data[json.react]) {
+            text = text.replaceAll("@" + json.react + "." + x, data[json.react][x]);
+        }
+        return text;
+    }
+    else {
+        return text.replaceAll("@" + json.react, data[json.react]);
+    }
 }
 
 const checkEvent=function(event){
