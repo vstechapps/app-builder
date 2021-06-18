@@ -21,7 +21,22 @@
 .copyright{
     font-size: 10px;
 }
-.seperator{
-    height:2px;
-    background:goldenrod;
+
+#loader{
+    position: absolute;
+    top: 0px;
+    display: flex;
+    z-index: 1000;
+    opacity: 0.5;
+    background: black;
+    height: 100%;
+    width: 100%;
+}
+#loader > .loading{
+    position: relative;
+    margin-left: 45%;
+    height: 50px;
+    width: 50px;
+    background: aqua;
+    align-self: center;
 }

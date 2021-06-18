@@ -3,6 +3,25 @@ var data={
     menu:[{name:"login",action:"login()"}]
 }
 
+
+parseElement=function(element){
+    console.log("Parsing : "+element.tagName+" "+element.className);
+    var json={tag:element.tagName};
+    var attrNames=element.getAttributeNames();
+    if (attrNames.length > 0) json.attributes = [];
+    attrNames.forEach(n => { json.attributes.push({ name: n, value: element.getAttribute(n) }) });
+    if (element.childElementCount > 0) {
+        json.children = [];
+        for (var i=0;i<element.childElementCount;i++) {
+            json.children.push(parseElement(element.children[i]));
+        }
+    }
+    else{
+        json.text=element.innerText;
+    }
+    return json;
+}
+
 const compare=function(x,y){
     if(x instanceof Object){
         if(! y instanceof Object) return false;
@@ -20,24 +39,18 @@ const loader={
         $("#loader").show();
     },
     off:function(){
-        $("#loader").show();
+        $("#loader").hide();
     }
 }
 
-const render=function(changes){
+const render=function(){
     $("[react]").each((index,element)=>{
-        var change=data[element.attributes["react"].nodeValue];
-        if(change!=null){
-            console.log("Data changes occured on "+change);
-            loader.on();
-            alert("changing");
-            if(data[change] instanceof Object){
-                var parent=element.parentNode;
-                var html=parent.innerHTML;
-                $(parent).empty();
-                for(i in data[change]){
-                    parent.appendChild(html.replace("menu","login"));
-                }
+        var n=element.attributes["react"].nodeValue;
+        var d=data[n];
+        if(d instanceof Object){ 
+            loader.on();            
+            if(d instanceof Object){
+                
             }
             loader.off();
         }
@@ -60,9 +73,21 @@ checkEvent=function(event){
     render(changes);
 }
 
-// Code to listen all user events at document level
-var eventTypes=["click"];
-eventTypes.forEach(type=>$(document).on(type,event=>checkEvent(event)));
 
-// Initial Rendering
-render(compare({},data));
+load=function(){
+    // Parsing entire document body into json
+    var body=parseElement(document.body);
+    console.log(body);
+
+    // listen all user events at document level
+    var eventTypes=["click"];
+    eventTypes.forEach(type=>$(document).on(type,event=>checkEvent(event)));
+
+    
+    // Initial Rendering parsed body to html
+    render(compare({},data));
+}
+
+document.addEventListener("DOMContentLoaded", function(event) {
+    load();      
+});

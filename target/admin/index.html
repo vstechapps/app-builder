@@ -8,30 +8,30 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-  
+  <script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-firestore.js"></script>
+    <script src="firebase.js"></script>
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="row col-12 m-0 p-0" id="admin">
+    <div class="row col-12 m-0 p-0">
         <div class="row col-12 m-0 p-2 header">
             <div class="col-12 col-sm-6 left">
                 <span class="title">App Builder v1.0</span>
                 <span class="copyright">Copyright @ V.V.S.K</span>
             </div>
             <div class="col-12 col-sm-6 right text-right">
-                <span react="menu" act="{{menu.action}}" class="tab">{{menu}}</span>
+                <span react="menu" act="@menu.action" class="tab">@menu.name</span>
             </div>
         </div>
         <div class="row col-12 body">
-
+            
         </div>
     </div>
-    <div id="loader"></div>
-    <script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-analytics.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-firestore.js"></script>
-    <script src="script.js"></script>
-    <script src="firebase.js"></script>
-    <link rel="stylesheet" href="style.css">
+    <div id="loader"><div class="loading"></div></div>
+    Hello text
 </body>
 </html>
