@@ -64,6 +64,7 @@ export default class Page {
     }
 
     render = function () {
+        this.loader.on();
         var html = "";
         this.body.children.forEach(n => html += this.generateElement(n));
         document.body.innerHTML = html;
@@ -141,7 +142,7 @@ export default class Page {
             console.error("No Action method "+action+" is defined");
             return;
         }
-        console.error("Triggering Action method "+action+" is defined");
+        console.log("Triggering Action method "+action);
         this.methods[action](d);
 
         this.render();
@@ -161,7 +162,7 @@ export default class Page {
         document.body.innerHTML = ""
 
         // Initial Rendering
-        this.render();
+        //this.render();
     }
 
     constructor(data) {
