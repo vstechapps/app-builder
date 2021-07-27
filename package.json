@@ -4,7 +4,9 @@
   "description": "App Builder to build web app with 3D technology",
   "main": "index.js",
   "scripts": {
-    "build": "node build",
+    "init": "node scripts/_init",
+    "serve": "node scripts/_serve",
+    "build": "node scripts/_build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -23,5 +25,8 @@
   "bugs": {
     "url": "https://github.com/vvskchaitanya/app-builder/issues"
   },
-  "homepage": "https://github.com/vvskchaitanya/app-builder#readme"
+  "homepage": "https://github.com/vvskchaitanya/app-builder#readme",
+  "dependencies": {
+    "node-static": "^0.7.11"
+  }
 }

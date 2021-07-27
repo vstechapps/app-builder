@@ -1,0 +1,42 @@
+.header{
+    background-color: coral;
+}
+.right{
+    margin-bottom: 5px;
+}
+.title{
+    font-size: 25px;
+    font-weight: bold;
+}
+.tab{
+    font-size: 20px;
+    padding: 10px 15px;
+    cursor:pointer;
+    border-bottom: 5px solid transparent;
+}
+.tab.active{
+    color:darkslateblue;
+    border-bottom: 5px solid darkslateblue;
+}
+.copyright{
+    font-size: 10px;
+}
+
+#loader{
+    position: absolute;
+    top: 0px;
+    display: flex;
+    z-index: 1000;
+    opacity: 0.5;
+    background: black;
+    height: 100%;
+    width: 100%;
+}
+#loader > .loading{
+    position: relative;
+    margin-left: 45%;
+    height: 50px;
+    width: 50px;
+    background: aqua;
+    align-self: center;
+}
